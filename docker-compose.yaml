@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghcr.io/gitrgoliveira/tfc-pipeline-run-task/tfc-pipeline-run-task:latest
+    container_name: tfc-pipeline-run-task
+    ports:
+      - 80:80
