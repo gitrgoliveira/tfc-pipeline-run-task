@@ -34,10 +34,16 @@ The path in the url needs to match the path to an existing script along with its
 To test the application is running, you can `POST` a test payload.
 
 ```bash
-curl -X POST "http://localhost/scripts/pre_plan.sh?shasum=sha256:e72d4cbd289cae46769aa8302f9bb3f34858f60370175104bcfbe213bbadb468" -d @test_payload.json
+$ curl -X POST "http://localhost/scripts/pre_plan.sh?shasum=sha256:e72d4cbd289cae46769aa8302f9bb3f34858f60370175104bcfbe213bbadb468" -d @test_payload.json
 ```
 
 You can customize the scripts by changing the scripts in the `scripts` directory. The script names should match the ones specified in the RunTaskPayload struct.
+
+To retrieve the `shasum` parameter you can run this command and add the output to the URL as `?shasum=sha256:`
+```bash
+$ shasum -a 256 ./scripts/pre_apply.sh
+e72d4cbd289cae46769aa8302f9bb3f34858f60370175104bcfbe213bbadb468  ./scripts/pre_apply.sh
+```
 
 The scripts are then run in a unique folder that contains:
  * A `payload.json` file with the contentss of the received JSON payload.
