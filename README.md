@@ -50,6 +50,16 @@ The scripts are then run in a unique folder that contains:
  * The uploaded configuration version - i.e. all terraform files received by TFC/E
  * If there's a plan file, it's downloaded to a file called `plan.json`
 
+### Setting up your Run Task for testing
+If you are just experimenting in your own laptop you need to:
+ * Run `docker compose up --build`
+ * Test with `curl -X POST "http://0.0.0.0/scripts/pre_plan.sh?shasum=sha256:e72d4cbd289cae46769aa8302f9bb3f34858f60370175104bcfbe213bbadb468" -d @test_payload.json` or similar
+ * Discover your external IP address
+ * Ensure  your firewall allows incoming traffic on port 80
+ * Run the same `curl` test with your external IP.
+ * Create a new Run Task with the following settings:
+    * Endpoint URL: `http://<your_external_ip>:80/scripts/pre_plan.sh?shasum=sha256:e72d4cbd289cae46769aa8302f9bb3f34858f6`
+
 ## Note on Security
 This project does not include TLS encryption as it's a minimum requirement for production. In a real-world scenario, you should consider adding TLS encryption (like Let's Encrypt) to ensure secure communication between clients and the server.
 
