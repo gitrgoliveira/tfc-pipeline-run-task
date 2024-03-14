@@ -8,8 +8,11 @@ The different run task stages supported are:
  * pre-apply
  * post-apply
 
-**Due to the missing TLS in the listener, please do not use this project as is.**
+> [!CAUTION]
+> Due to the missing TLS in the listener, please do not use this project as is.
  
+![TFC Pipeline RunTask Run](assets/screenshot.png)
+
 ## Getting Started
 These instructions will help you run the project on your local machine for development and testing purposes.
 The project is designed to be run in a containerized environment, so you can easily deploy it to any cloud provider or local machine.
